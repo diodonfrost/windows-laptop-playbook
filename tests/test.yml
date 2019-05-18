@@ -1,5 +1,12 @@
 ---
 - hosts: localhost
-  remote_user: root
+  become: yes
+
   roles:
+    - diodonfrost.puppet_agent
     - windows-laptop-playbook
+    - diodonfrost.java
+    - diodonfrost.packer
+    - diodonfrost.vagrant
+    - diodonfrost.terraform
+    - diodonfrost.terragrunt
