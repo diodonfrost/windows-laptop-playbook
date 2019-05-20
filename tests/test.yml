@@ -1,6 +1,5 @@
 ---
-- hosts: localhost
-  become: yes
+- hosts: windows-machines
 
   roles:
     - diodonfrost.puppet_agent
