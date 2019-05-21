@@ -35,3 +35,12 @@ control 'install-04' do
     its('exit_status') { should eq 0 }
   end
 end
+
+control 'install-05' do
+  impact 1.0
+  title 'Atom'
+  desc 'Atom.io should be functionnal'
+  describe package('atom') do
+    it { should be_installed }
+  end
+end
