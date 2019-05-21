@@ -6,7 +6,7 @@
     path: https://atom.io/download/windows_x64
     product_id: Atom
     arguments: /S
-    creates_path: '%HOMEPATH%\.atom'
+    creates_path: %LOCALAPPDATA%\atom\atom.exe'
     state: present
 
 - name: Install Atom module with Atom Package Manager
