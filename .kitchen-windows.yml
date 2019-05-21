@@ -11,7 +11,7 @@ verifier:
 
 platforms:
   # Provisioning of Ansible server where ansible playbook will be launched
-  - name: centos-7
+  - name: ubuntu-18.04
     driver:
       network:
         - [ 'private_network', { ip: '172.28.128.10' } ]
