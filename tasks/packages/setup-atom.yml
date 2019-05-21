@@ -8,3 +8,9 @@
     arguments: /S
     creates_path: '%HOMEPATH%\.atom'
     state: present
+
+- name: Install Atom module with Atom Package Manager
+  win_shell: "apm install {{ item }}"
+  args:
+    creates: '%HOMEPATH%\.atom\packages\{{ item }}'
+  with_items: "{{ atom_packages }}"
