@@ -1,0 +1,7 @@
+---
+# Install selected packages
+
+- name: Install text editor Atom
+  import_tasks: setup-atom.yml
+  when: atom_install == true
+  tags: atom

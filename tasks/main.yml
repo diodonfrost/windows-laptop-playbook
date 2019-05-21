@@ -1,2 +1,6 @@
 ---
 # tasks file for windows-laptop-playbook
+
+- name: Ensure selected packages are present
+  include_tasks: "packages/install.yml"
+  tags: always

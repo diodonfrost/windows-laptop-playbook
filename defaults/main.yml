@@ -1,2 +1,6 @@
 ---
 # defaults file for windows-laptop-playbook
+
+# Install text editor Atom.
+# Default is true.
+atom_install: true
