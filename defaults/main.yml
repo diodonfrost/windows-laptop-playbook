@@ -11,18 +11,21 @@ default_packages:
   - slack
 
 # Audio packages list
+audio_install: true
 audio_packages:
   - discord
   - spotify
   - vlc
 
 # Cloud packages list
+cloud_install: true
 cloud_packages:
   - kubernetes-cli
   - awscli
   - gcloudsdk
 
 # Development packages list
+development_install: true
 development_packages:
   - atom
   - notepadplusplus
@@ -30,6 +33,7 @@ development_packages:
   - gitkraken
 
 # Network packages list
+network_install: true
 network_packages:
   - kitty
   - winscp
