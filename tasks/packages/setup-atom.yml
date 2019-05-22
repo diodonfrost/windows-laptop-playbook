@@ -2,11 +2,8 @@
 # Install text editor atom
 
 - name: Install text editor Atom
-  win_package:
-    path: https://atom.io/download/windows_x64
-    product_id: Atom
-    arguments: /S
-    creates_path: %LOCALAPPDATA%\atom\atom.exe'
+  win_chocolatey:
+    name: atom
     state: present
 
 - name: Install Atom module with Atom Package Manager
