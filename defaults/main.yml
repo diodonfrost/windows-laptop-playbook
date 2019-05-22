@@ -5,13 +5,10 @@
 default_packages:
   - chocolatey
   - 7zip
-  - winscp
   - keepass
   - dropbox
   - firefox
   - slack
-  - wireshark
-  - kitty
 
 # Audio packages list
 audio_packages:
@@ -19,18 +16,24 @@ audio_packages:
   - spotify
   - vlc
 
-# cloud packages list
+# Cloud packages list
 cloud_packages:
   - kubernetes-cli
   - awscli
   - gcloudsdk
 
-# development packages list
+# Development packages list
 development_packages:
   - atom
   - notepadplusplus
   - git
   - gitkraken
+
+# Network packages list
+network_packages:
+  - kitty
+  - winscp
+  - wireshark
 
 # Install atom plugins
 atom_packages:

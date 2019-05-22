@@ -21,3 +21,8 @@
   import_tasks: development-packages.yml
   when: development_install
   tags: development
+
+- name: Install network packages
+  import_tasks: network-packages.yml
+  when: network_install
+  tags: network

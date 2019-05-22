@@ -1,0 +1,8 @@
+---
+# Install network packages
+
+- name: Network packages
+  win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ network_packages }}"
