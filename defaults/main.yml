@@ -11,12 +11,19 @@ default_packages:
   - firefox
   - slack
   - wireshark
+  - kitty
 
 # Audio packages list
 audio_packages:
   - discord
   - spotify
   - vlc
+
+# cloud packages list
+cloud_packages:
+  - kubernetes-cli
+  - awscli
+  - gcloudsdk
 
 # development packages list
 development_packages:
