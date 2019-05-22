@@ -1,9 +1,29 @@
 ---
 # defaults file for windows-laptop-playbook
 
-# Install text editor Atom.
-# Default is true.
-atom_install: true
+# Default apps to install
+default_packages:
+  - chocolatey
+  - 7zip
+  - winscp
+  - keepass
+  - dropbox
+  - firefox
+  - slack
+  - wireshark
+
+# Audio packages list
+audio_packages:
+  - discord
+  - spotify
+  - vlc
+
+# development packages list
+development_packages:
+  - atom
+  - notepadplusplus
+  - git
+  - gitkraken
 
 # Install atom plugins
 atom_packages:

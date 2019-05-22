@@ -3,15 +3,16 @@
 
 - name: Install chocolatey
   win_chocolatey:
-    name: chocolatey
+    name: "{{ item }}"
     state: present
+  with_items: "{{ default_packages }}"
 
-- name: Install text editor Atom
-  import_tasks: setup-atom.yml
-  when: atom_install
-  tags: atom
+- name: Install development packages
+  import_tasks: development-packages.yml
+  when: development_install
+  tags: development
 
-- name: Install Python
-  import_tasks: setup-python.yml
-  when: python_install
-  tags: python
+- name: Install audio packages
+  import_tasks: audio-packages.yml
+  when: audio_install
+  tags: audio

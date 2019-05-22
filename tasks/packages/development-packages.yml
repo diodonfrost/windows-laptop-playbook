@@ -1,0 +1,27 @@
+---
+# Install text editor atom
+
+- name: Install development packages
+  win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ development_packages }}"
+
+- name: Install Atom module with Atom Package Manager
+  win_shell: "apm install {{ item }}"
+  args:
+    creates: '%HOMEPATH%\.atom\packages\{{ item }}'
+  with_items: "{{ atom_packages }}"
+
+- name: Install Python 3 language
+  win_chocolatey:
+    name: python3
+    state: present
+  when: python_install
+
+- name: Install package with pip3
+  win_shell: "pip3 install {{ item }}"
+  args:
+    creates: '%COMMONPROGRAMFILES(x86)%\Python{{ python_version[:3] | replace('.', '') }}-64\Lib\site-packages\{{ item }}'
+  with_items: "{{ python_packages }}"
+  when: python_install
