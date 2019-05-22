@@ -1,38 +1,164 @@
-Role Name
-=========
+# windows laptop playbook
 
-A brief description of the role goes here.
+[![Build Status](https://travis-ci.org/diodonfrost/windows-laptop-playbook.svg?branch=master)](https://travis-ci.org/diodonfrost/windows-laptop-playbook)
 
-Requirements
-------------
+This playbook installs and configures most of the software I use on my windows laptop for Cloud and software development.
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+## Installation
 
-Role Variables
---------------
+1.  [Install Ansible](http://docs.ansible.com/intro_installation.html).
+2.  Clone this repository to your local drive.
+3.  Run 'ansible-galaxy install -r requirements.yml' inside this directory to install required Ansible roles.
+4.  Run 'ansible-playbook playbook.yml' inside this directory.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Running a specific set of tagged tasks
 
-Dependencies
-------------
+You can filter which part of the provisioning process to run by specifying a set of tags using `ansible-playbook --tags` flag.
+The tags available:
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+-   audio
+-   cloud
+-   development
+-   network
 
-Example Playbook
-----------------
+ansible-playbook playbook.yml --tags "cloud,development"
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Overriding Defaults
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+---
+# defaults file for windows-laptop-playbook
 
-License
--------
+# Default apps to install
+default_packages:
+  - chocolatey
+  - 7zip
+  - keepass
+  - dropbox
+  - firefox
+  - slack
 
-BSD
+# Audio packages list
+audio_install: true
+audio_packages:
+  - discord
+  - spotify
+  - vlc
 
-Author Information
-------------------
+# Cloud packages list
+cloud_install: true
+cloud_packages:
+  - kubernetes-cli
+  - awscli
+  - gcloudsdk
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+# Development packages list
+development_install: true
+development_packages:
+  - atom
+  - notepadplusplus
+  - git
+  - gitkraken
+
+# Network packages list
+network_install: true
+network_packages:
+  - kitty
+  - winscp
+  - wireshark
+
+# Install atom plugins
+atom_packages:
+  - atom-beautify
+  - atom-jinja2
+  - atom-material-ui
+  - busy-signal
+  - git-plus
+  - highlight-selected
+  - intentions
+  - language-ansible
+  - language-docker
+  - language-chef
+  - language-groovy
+  - language-puppet
+  - language-terraform
+  - linter
+  - linter-ansible-linting
+  - linter-docker
+  - linter-erb
+  - linter-flake8
+  - linter-golinter
+  - linter-markdown
+  - linter-puppet-lint
+  - linter-pylint
+  - linter-ruby
+  - linter-shellcheck
+  - linter-ui-default
+  - markdown-preview-plus
+  - minimap
+  - Sublime-Style-Column-Selection
+
+# Install Python language.
+# Default is true.
+python_install: true
+
+# Python-pip3 packages to install
+python_packages:
+  - awscli
+```
+
+## Dependencies
+
+None
+
+## Local Testing
+The preferred way of locally testing the role is to use Docker. You will have to install Docker on your system. See Get started for a Docker package suitable to for your system.
+
+You can also use vagrant and Virtualbox to run tests locally. You will have to install Virtualbox and Vagrant on your system. See Vagrant Downloads for a vagrant package suitable for your system. For all our tests we use test-kitchen. If you are not familiar with test-kitchen please have a look at their guide.
+
+Next install test-kitchen:
+```shell
+# Install dependencies
+gem install bundler
+bundle install
+```
+
+### Testing on Windows with Virtualbox
+
+Windows can only be test with Virtualbox provider, do not use 'kitchen test' command for testing Windows environment. There 4 steps you will be using with test-kitchen as part of your workflow.
+
+First of all we must set the kitchen file:
+```shell
+# For testing Windows on Linux
+export KITCHEN_YAML=.kitchen-windows.yml
+
+# For testing Windows on Windows
+set KITCHEN_YAML=.kitchen-windows.yml
+```
+
+Provision the virtual machines, a Linux machine to run Ansible and Windows machines to apply playbook again:
+```shell
+# deploy machines
+kitchen create
+
+# Launch playbook
+kitchen converge
+```
+
+Finaly launch inspec tests:
+```shell
+kitchen verify
+```
+
+For cleaning environment use:
+```shell
+kitchen destroy
+```
+
+## License
+
+Apache 2
+
+## Author Information
+
+This role was created in 2018 by diodonfrost.
