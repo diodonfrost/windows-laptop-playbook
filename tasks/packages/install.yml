@@ -7,12 +7,17 @@
     state: present
   with_items: "{{ default_packages }}"
 
-- name: Install development packages
-  import_tasks: development-packages.yml
-  when: development_install
-  tags: development
-
 - name: Install audio packages
   import_tasks: audio-packages.yml
   when: audio_install
   tags: audio
+
+- name: Install cloud packages
+  import_tasks: cloud-packages.yml
+  when: cloud_install
+  tags: cloud
+
+- name: Install development packages
+  import_tasks: development-packages.yml
+  when: development_install
+  tags: development

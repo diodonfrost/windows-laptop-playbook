@@ -1,0 +1,8 @@
+---
+# Install cloud packages
+
+- name: Cloud packages
+  win_chocolatey:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ cloud_packages }}"

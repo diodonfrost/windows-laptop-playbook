@@ -1,5 +1,5 @@
 ---
-# Install text editor atom
+# Install development packages
 
 - name: Install development packages
   win_chocolatey:
