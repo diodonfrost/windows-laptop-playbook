@@ -35,3 +35,11 @@ atom_packages:
   - markdown-preview-plus
   - minimap
   - Sublime-Style-Column-Selection
+
+# Install Python language.
+# Default is true.
+python_install: true
+
+# Python-pip3 packages to install
+python_packages:
+  - awscli

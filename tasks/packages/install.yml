@@ -1,7 +1,17 @@
 ---
 # Install selected packages
 
+- name: Install chocolatey
+  win_chocolatey:
+    name: chocolatey
+    state: present
+
 - name: Install text editor Atom
   import_tasks: setup-atom.yml
-  when: atom_install == true
+  when: atom_install
   tags: atom
+
+- name: Install Python
+  import_tasks: setup-python.yml
+  when: python_install
+  tags: python

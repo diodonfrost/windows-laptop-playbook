@@ -1,0 +1,13 @@
+---
+# Install Python language
+
+- name: Install Python 3 language
+  win_chocolatey:
+    name: python3
+    state: present
+
+- name: Install package with pip3
+  win_shell: "pip3 install {{ item }}"
+  args:
+    creates: '%COMMONPROGRAMFILES(x86)%\Python{{ python_version[:3] | replace('.', '') }}-64\Lib\site-packages\{{ item }}'
+  with_items: "{{ python_packages }}"
