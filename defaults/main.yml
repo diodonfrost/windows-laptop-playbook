@@ -31,7 +31,6 @@ development_packages:
   - notepadplusplus
   - git
   - gitkraken
-  - sonarqube-scanner.portable 
 
 # Network packages list
 network_install: true
